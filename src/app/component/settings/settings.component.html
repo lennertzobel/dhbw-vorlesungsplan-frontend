@@ -1,0 +1,75 @@
+<div class="container max-w-screen-sm mx-auto px-4 py-8 space-y-8" *ngIf="course">
+  <section>
+    <div class="flex items-center space-x-2 mb-2">
+      <a routerLink="/" class="p-0.5 text-neutral-900 dark:text-neutral-100 hover:text-neutral-500 dark:hover:text-neutral-400 transition-colors">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6"
+             fill="none"
+             viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+        </svg>
+      </a>
+      <h1 class="text-neutral-900 font-semibold text-xl dark:text-neutral-100">Einstellungen</h1>
+    </div>
+    <div class="flex flex-col rounded overflow-hidden divide-y-2 divide-neutral-200 dark:divide-neutral-700">
+      <div>
+        <div
+          class="flex justify-between px-3 py-2 border-2 bg-white border-white dark:bg-neutral-800 dark:border-neutral-800">
+          <h2 class="text-neutral-900 dark:text-neutral-100 shrink-0 mr-4">Dein Kurs</h2>
+          <div class="truncate">{{course?.name}}</div>
+        </div>
+      </div>
+      <!--      <div>-->
+      <!--        <div-->
+      <!--          class="flex justify-between px-3 py-2 border-2 bg-white border-white dark:bg-neutral-800 dark:border-neutral-800">-->
+      <!--          <h2 class="text-neutral-900 dark:text-neutral-100 shrink-0 mr-4">Kalenderabonnement</h2>-->
+      <!--          <div class="truncate">{{ apiUrl + '/ical/course/' + course?.urlEncodedName}}</div>-->
+      <!--        </div>-->
+      <!--      </div>-->
+    </div>
+  </section>
+  <section>
+    <h2 class="text-sm uppercase mb-1">Eingeschlossene Kurse</h2>
+    <div class="flex flex-col divide-y-2 divide-neutral-200 dark:divide-neutral-700">
+      <ng-container *ngIf="includedCourses">
+        <button *ngFor="let course of includedCourses" (click)="onDeleteIncludedId(course.id)"
+                class="flex w-full items-center justify-between px-3.5 py-2.5 bg-white first:rounded-t last:rounded-b dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors cursor-pointer focus:z-10">
+          <span class="text-neutral-900 dark:text-neutral-100">{{course.name}}</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd"
+                  d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
+                  clip-rule="evenodd"/>
+          </svg>
+        </button>
+      </ng-container>
+      <a routerLink="includes"
+         class="flex items-center justify-between px-3.5 py-2.5 text-neutral-900 dark:text-neutral-100 bg-white first:rounded-t last:rounded-b dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors cursor-pointer focus:z-10">
+        Kurs hinzufügen
+      </a>
+    </div>
+  </section>
+  <section>
+    <h2 class="text-sm uppercase mb-1">Ausgeschlossene Kurse</h2>
+    <div class="flex flex-col divide-y-2 divide-neutral-200 dark:divide-neutral-700">
+      <ng-container *ngIf="excludedCourses">
+        <button *ngFor="let course of excludedCourses" (click)="onDeleteExcludedId(course.id)"
+                class="flex w-full items-center justify-between px-3.5 py-2.5 bg-white first:rounded-t last:rounded-b dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors cursor-pointer focus:z-10">
+          <span class="text-neutral-900 dark:text-neutral-100">{{course.name}}</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd"
+                  d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
+                  clip-rule="evenodd"/>
+          </svg>
+        </button>
+      </ng-container>
+      <a routerLink="excludes"
+         class="flex items-center justify-between px-3.5 py-2.5 text-neutral-900 dark:text-neutral-100 bg-white first:rounded-t last:rounded-b dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors cursor-pointer focus:z-10">
+        Kurs ausschließen
+      </a>
+    </div>
+  </section>
+  <section>
+    <button (click)="onLogout()" class="button button-secondary-red w-full">
+      Kurs wechseln
+    </button>
+  </section>
+</div>

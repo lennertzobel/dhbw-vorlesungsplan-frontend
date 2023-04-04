@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply focus:outline-4 focus:outline-red-500/50 focus:outline focus:outline-offset-0 disabled:opacity-50;
+  }
+
+  [type=text], [type=email], [type=url], [type=password], [type=number], [type=date], [type=datetime-local], [type=month], [type=search], [type=tel], [type=time], [type=week], [multiple], textarea, select, [type=checkbox], [type=radio] {
+    @apply border-2 bg-white border-neutral-200 rounded focus:border-red-500 focus:ring-0 focus:outline-4 focus:outline-red-500/50 focus:outline focus:outline-offset-0 disabled:opacity-100 dark:bg-neutral-800 dark:border-neutral-700;
+  }
+}
+
+@layer components {
+  [type='radio'].form-radio-button {
+    @apply absolute opacity-0;
+  }
+
+  [type='radio'].form-radio-button + label {
+    @apply inline-block bg-white text-neutral-900 px-3 py-2 border-2 border-neutral-200 text-center truncate rounded dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-100;
+  }
+
+  [type='radio'].form-radio-button:focus + label {
+    @apply outline-4 outline-red-500/50 outline outline-offset-0 border-red-500;
+  }
+
+  [type='radio'].form-radio-button:checked + label {
+    @apply z-10 border-red-500;
+  }
+
+  .button {
+    @apply inline-flex items-center justify-center space-x-1 rounded px-3 py-2 border-2 transition-colors cursor-pointer disabled:cursor-not-allowed;
+  }
+
+  .button-red {
+    @apply border-red-500 bg-red-500 text-red-50 hover:bg-red-600 hover:border-red-600 disabled:hover:bg-red-500 disabled:hover:border-red-500;
+  }
+
+  .button-secondary-red {
+    @apply bg-white border-white dark:bg-neutral-800 dark:border-neutral-800 text-red-500 hover:bg-neutral-200 hover:border-neutral-200 dark:hover:bg-neutral-700 dark:hover:border-neutral-700;
+  }
+}
